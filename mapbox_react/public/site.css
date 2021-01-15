@@ -2,7 +2,7 @@
   display: inline-block;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   margin: 12px;
   background-color: #404040;
   color: #ffffff;
@@ -17,4 +17,63 @@
   right: 0;
   left: 0;
   bottom: 0;
+  margin-left: 7%;
+}
+
+.txtimg{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+img{
+  width: 15%;
+  height: 15%;
+}
+
+img:hover{
+  cursor: pointer;
+}
+
+.text{
+  color: green;
+}
+
+.popContainer {
+  margin: auto;
+  width: 15%;
+  padding: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-top: 0%;
+  padding-left: 0%;
+  width: 7%;
+  background-color: yellowgreen;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding-left: 15%;
+  padding-bottom: 20%;
+  padding-top: 20%;
+  padding-right: 20%;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
 }

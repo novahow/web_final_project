@@ -2,10 +2,21 @@
   "name": "mapboxAndReact",
   "version": "0.0.1",
   "dependencies": {
+    "@apollo/client": "^3.3.7",
+    "@apollo/react-hooks": "^4.0.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
+    "antd": "^4.10.2",
+    "graphql-yoga": "^1.18.3",
+    "mapbox-gl": "^2.0.0",
     "react": "^16.9.0",
+    "react-apollo": "^3.1.5",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.1.1",
-    "mapbox-gl": "^2.0.0"
+    "react-scroll": "^1.8.1",
+    "rebass": "^4.0.7",
+    "web-vitals": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start"
@@ -23,4 +34,3 @@
     ]
   }
 }
-

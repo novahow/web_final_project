@@ -1,46 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import mapboxgl from 'mapbox-gl';
+import React from 'react'
+import ReactDOM from 'react-dom'
+// import './index.css'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import 'antd/dist/antd.css'
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW50aWNkdWtlIiwiYSI6ImNramg3NWQzdjZnMjUycXJ3NGZ0MGZzMzcifQ.q5BvzHDORxEQCIJ5EZondQ';
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloProvider } from '@apollo/client'
+import { ApolloLink, HttpLink, from, split, execute } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws'
+import { getMainDefinition } from '@apollo/client/utilities'
+//import * as serviceWorker from './serviceWorker'
 
-class Application extends React.Component {
-  constructor(props) {
-  super(props);
-    this.state = {
-      lng: 121.5416,
-      lat: 25.0174,
-      zoom: 13
-    };
-  }
+const httpLink = new HttpLink({
+    uri: "http://localhost:4000/"
+})
 
-  componentDidMount() {
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom
-    });
+const wsLink = new WebSocketLink({
+    uri: `ws://localhost:4000`,
+    options: { reconnect: true }
 
-    map.on('move', () => {
-      this.setState({
-        lng: map.getCenter().lng.toFixed(4),
-        lat: map.getCenter().lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2)
-      });
-    });
-  }
+})
 
-  render() {
-    return (
-      <div>
-        <div className='sidebarStyle'>
-          <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-        </div>
-        <div ref={el => this.mapContainer = el} className='mapContainer' />
-      </div>
-    )
-  }
-}
+const link = split(
+    ({ query }) => {
+        const definition = getMainDefinition(query)
+        return (
+            definition.kind === 'OperationDefinition' &&
+            definition.operation === 'subscription'
+        )
+    },
+    wsLink,
+    httpLink
+)
 
-ReactDOM.render(<Application />, document.getElementById('app'));
+const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache().restore({})
+})
+
+ReactDOM.render(
+    <ApolloProvider client={client}>
+        <App />
+    </ApolloProvider>,
+    document.getElementById('app')
+)
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals()
+//serviceWorker.unregister()
