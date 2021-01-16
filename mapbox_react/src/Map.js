@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import Intro from './Intro'
 // import { useQuery, useMutation } from "@apollo/react-hooks";
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import Dep_rank from './Dep_rank';
 const Map = (props) => {
 
   const [lng, setLng] = useState(121.5392);
@@ -77,7 +78,7 @@ const Map = (props) => {
     <div>
       <ul>
         <li><a class="active" href="#login">{master}</a></li>
-        <li><a href="#ranking">Rankings</a></li>
+        <li><Dep_rank arr={dep_arr} /></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
       </ul>

@@ -16,10 +16,10 @@ const Deps = (props) => {
             </div>
             <span>
                 {exp ?
-                    (<div className='bg'>
+                    (<span className='bg'>
                         <button className='goodbutton'> Boy </button>
                         <button className='goodbutton'> Girl </button>
-                    </div>
+                    </span>
                     ) : (<div></div>)}
             </span>
         </div>
