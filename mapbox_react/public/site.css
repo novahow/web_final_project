@@ -95,11 +95,27 @@ li a:hover:not(.active) {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+  background-color: lightskyblue;
+  padding-top: 0%;
+  height: 5%;
 }
 
 .bg:hover{
   background-color: lightsalmon;
+}
+
+.dinobutton {
+  background:radial-gradient(ellipse at center,pink, violet);
+  color: white;
+  padding: 14px 20px;
+  margin: auto;
+  border-radius: 20px;
+  border: 3px solid darkblue;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  position: relative;
 }
 
 .goodbutton{
@@ -124,12 +140,13 @@ li a:hover:not(.active) {
 }
 
 span{
-  padding-top: 20%;
+  padding-top: 10%;
+  height: 50%;
 }
 
 body{
   background-position: center;
-  background-image: url("https://doqvf81n9htmm.cloudfront.net/data/alicelee_126/201801/0123/204.jpg");
+  background-image: url("https://i.pinimg.com/originals/52/80/34/528034c8d0e812d30d2cf3f2afce67a0.gif");
 }
 
 .login{
@@ -140,6 +157,79 @@ body{
 }
 
 #app{
+  align-content: center;
   margin-left: auto;
   margin-right: auto;
+}
+.dinobutton:hover {
+  opacity: 0.8;
+  font-weight: bold;
+  font-size: large;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+
+.container {
+  padding: 16px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto; 
+  position: relative;
+}
+.word_back {
+  border-radius: 10px;
+  opacity: 0.5s;
+  border: 1px solid black;
+  width: 45%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+ 
+.Log {
+  background-image: url(https://image.freepik.com/free-vector/beautiful-watercolor-background-with-frame_69286-74.jpg);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-position: center;
+}
+
+.header{
+  font-weight: bold;
+
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
