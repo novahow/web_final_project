@@ -1,16 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
-
-/*function Intro(props) {
-    console.log('aaa')
-    console.log(props)
-    console.log('???')
-    return (
-        <div>
-            {props.dep}
-        </div>
-    );
-}*/
+import Deps from './Deps'
 
 const sea_in_deps = {
     'CSEE': ['資工', '電機'], 'LAW': ['法律'],
@@ -23,20 +13,29 @@ const Intro = (props) => {
     const [exp, setExp] = useState(false)
     console.log('???', props)
     const [dp, setDp] = useState(props.value.dep)
+    const back = () => {
+        if (exp) {
+            setExp(false);
+        }
+    }
+
     return (
         <div>
-            <div className="txtimg">
+            <button className='back' onClick={back}>
+                back
+            </button>
+            { !exp ? (<div className="txtimg">
                 <div className="text">
                     {dp}
                 </div>
                 <img src=
-                    "https://lh3.googleusercontent.com/proxy/IchdiWzs1eJORTe24XOhds240E6msA1U65TWJlHB1rJWSR8_9N_WJXpQLZp0q8l7PusIODMdsUj6rhLl3xHQCkZS88Q0A6vyBM5AeoRgQos7Yacj5-nnGF8"
+                    {exp ? ("https://i.imgur.com/nZP0hWp.png")
+                        : ("https://i.imgur.com/4MMlH1M.png")}
                     onClick={() => { exp ? setExp(false) : setExp(true) }} />
 
-            </div>
-            { exp ? (sea_in_deps[dp].map(e => (
-                <h3>{e}</h3>
-            ))) : (<h3></h3>)}
+            </div>) : (sea_in_deps[dp].map(e => (
+                <Deps ele={e} exp={exp} />
+            )))}
         </div>
     );
 };
