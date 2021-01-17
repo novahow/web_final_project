@@ -7,6 +7,8 @@ import Map from './Map'
 import Form from './form'
 import useChat from './useChat'
 import PhotoLibrary from './photoLibrary/PhotoLibrary'
+import { BrowserRouter } from 'react-router-dom'
+import { Router, Route, hashHistory, IndexRoute, Switch } from 'react-router';
 
 function App() {
     // const { status, opened, messages, sendMessage, clearMessages } = useChat()
@@ -27,16 +29,41 @@ function App() {
         bodyRef.current.focus();
     }, mst)*/
     { console.log('幹', mst) };
+    /*return (
+        {/*<Switch>
+            <Route path="/">
+                <Form change={setMaster}
+                    master={windowmaster} conref={containerref} />
+            </Route>
+            <Route path='/map/:master' component={Map}>
+                <Map name={windowmaster} />
+            </Route>
+            <Route path='/gallery'>
+                <PhotoLibrary department={dep} />
+            </Route>
+
+            {/*<Route
+                path="/about"
+                render={props => <About {...props} extra={someVariable} />}
+            />
+            {/* 不要這麼做 }
+            <Route
+                path="/contact"
+                component={props => <Contact {...props} extra={someVariable} />}
+            />}
+        </Switch>
+    )*/
+    //useEffect = (() => {
     if (mst == 0) {
         return (
-            <Form change={setMaster} /*ref={bodyRef}*/
+            <Form change={setMaster}
                 master={windowmaster} conref={containerref}
                 switch={changeMst} page={mst} />
         )
     }
     else if (mst == 1) {
         return (<Map name={windowmaster} switch
-            ={setPressed} dep={setDep} />)
+            ={setPressed} dep={setDep} page={mst} />)
     }
     else {
         return (
@@ -44,19 +71,39 @@ function App() {
                 switch={setPressed} />
         )
     }
-    /*return (
+    //}, mst)
+
+}
+export default App
+
+/*if (mst == 0) {
+        return (
+            <Form change={setMaster}
+                    master={windowmaster} conref={containerref}
+                    switch={changeMst} page={mst} />
+        )
+    }
+    else if (mst == 1) {
+        return (<Map name={windowmaster} switch
+                    ={setPressed} dep={setDep} />)
+    }
+    else {
+        return (
+            <PhotoLibrary department={dep}
+                    switch={setPressed} />
+        )
+    }
+    return (
 
         (mst == 0) ? (
             <Form change={setMaster} ref={bodyRef}
-    master = { windowmaster } conref = { containerref }
-    switch= { changeMst } page = { mst } />
+                    master={windowmaster} conref={containerref}
+                    switch={changeMst} page={mst} />
         ) : (
 
         (mst == 1) ? (<Map name={windowmaster} switch={setPressed} dep={setDep} />)
             : (
-                <PhotoLibrary department={dep} switch={setPressed} />
+            <PhotoLibrary department={dep} switch={setPressed} />
             )
     )
     )*/
-}
-export default App

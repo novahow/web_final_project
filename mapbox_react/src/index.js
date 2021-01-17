@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import 'antd/dist/antd.css'
-
+import { BrowserRouter, HashRouter } from 'react-router-dom'
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { ApolloProvider } from '@apollo/client'
 import { ApolloLink, HttpLink, from, split, execute } from '@apollo/client';
@@ -40,9 +41,11 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-    <ApolloProvider client={client}>
-        <App />
-    </ApolloProvider>,
+    <HashRouter>
+        <ApolloProvider client={client}>
+            <App />
+        </ApolloProvider>
+    </HashRouter>,
     document.getElementById('app')
 )
 

@@ -20,8 +20,9 @@ const Map = (props) => {
     { dep: 'ELITE', cord: [121.5382, 25.0140] },
     { dep: 'LAW', cord: [121.5436, 25.0206] },
     { dep: 'INDUSTRY', cord: [121.5383, 25.0182] }];
-  console.log(props.name)
+  console.log('幹', props.name)
   useEffect(() => {
+    //async = () => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW50aWNkdWtlIiwiYSI6ImNramg3NWQzdjZnMjUycXJ3NGZ0MGZzMzcifQ.q5BvzHDORxEQCIJ5EZondQ';
     const init_map = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
@@ -63,7 +64,7 @@ const Map = (props) => {
           .setPopup(popup)
           .addTo(map);
       })
-
+      //}
 
     };
 
@@ -71,7 +72,7 @@ const Map = (props) => {
 
 
     if (!map) init_map({ setMap, mapContainer });
-  }, [map, opn]);
+  }, [props.page]);
 
 
 
@@ -79,7 +80,7 @@ const Map = (props) => {
   return (
     <div >
       <ul className='fuck'>
-        <li ><a class="active" href="#login" onClick={() => props.switch(0)}>{master}</a></li>
+        <li ><a className="active" href="#login" onClick={() => props.switch(0)}>{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>

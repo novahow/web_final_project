@@ -220,6 +220,11 @@ a {
 	border-color: #FFFFFF;
 }
 
+.cbutton a{
+  color: white;
+  background: transparent;
+}
+
 form {
 	background-color: #FFFFFF;
 	display: flex;

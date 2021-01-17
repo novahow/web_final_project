@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Button, Input, message, Tag } from 'antd'
+// import { Router, Route, hashHistory, IndexRoute, Switch } from 'react-router';
+import { useHistory, useLocation, NavLink, useParams, Switch, Route } from "react-router-dom";
 const Form = (props) => {
     const setMaster = props.change;
     const windowmaster = props.master;
@@ -8,11 +10,19 @@ const Form = (props) => {
     const containerref = props.conref;
     const setPressed = props.switch;
     const mst = props.page;
+    const history = useHistory();
+    const loc = useLocation();
     useEffect(() => {
         bodyRef.current.focus();
-    }, [mst == 1])
+    }, [mst])
+
+    /*function handle() {
+        history.push('/map');
+    }*/
+
     return (
         <div className="container" id="container" ref={containerref}>
+
             <div className="form-container sign-up-container">
                 <form action="#">
                     <h1>Create Account </h1>
@@ -45,7 +55,18 @@ const Form = (props) => {
                     <Input type="password" placeholder="Password" />
                     {console.log(windowmaster)}
                     <a href="#">Forgot your password?</a>
-                    <button className='cbutton' onClick={() => { console.log('>>>'); if (windowmaster != "") setPressed(2) }}>Sign In</button>
+                    <button className='cbutton' onClick={() => {
+                        console.log('>>>');
+                        if (windowmaster != "") {
+                            setPressed(1);
+                        }
+                    }}>Sign In
+                        {/*<NavLink
+
+
+                            
+                            to={"/map/" + windowmaster}>Sign In</NavLink>*/}
+                    </button>
                 </form>
             </div>
             <div className="overlay-container">
@@ -62,7 +83,7 @@ const Form = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
