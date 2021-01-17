@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { useQuery, useMutation } from "@apollo/client"
 import useChat from './useChat'
+import { useQuery, useMutation, useLazyQuery } from '@apollo/client'
 const Deps = (props) => {
     const [exp, setExp] = useState(false)
-    const { retUser, getUsers, addUser } = useChat()
+
     const [newUserData, setNewUserData] = useState({})
     const [users, setUsers] = useState([]);
-    const [department, setDepartment] = useState('');
+    // const [department, setDepartment] = useState('');
 
     return (
         <div>
@@ -24,7 +24,7 @@ const Deps = (props) => {
                 {exp ?
                     (<span className='bg'>
                         <button className='goodbutton'> Boy </button>
-                        <button className='goodbutton'> Girl </button>
+                        <button className='goodbutton' onClick={() => { props.dep(props.ele); props.switch(2) }}> Girl </button>
                     </span>
                     ) : (<div></div>)}
             </span>

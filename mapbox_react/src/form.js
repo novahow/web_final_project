@@ -45,7 +45,7 @@ const Form = (props) => {
                     <Input type="password" placeholder="Password" />
                     {console.log(windowmaster)}
                     <a href="#">Forgot your password?</a>
-                    <button className='cbutton' onClick={() => { console.log('>>>'); if (windowmaster != "") setPressed(1) }}>Sign In</button>
+                    <button className='cbutton' onClick={() => { console.log('>>>'); if (windowmaster != "") setPressed(2) }}>Sign In</button>
                 </form>
             </div>
             <div className="overlay-container">
