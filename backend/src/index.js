@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 //import './index.css'
-//import App from './App'
+import App from './App'
 import App2 from './App2'
+import PhotoLibrary from './photoLibrary/PhotoLibrary'
 import reportWebVitals from './reportWebVitals'
 import 'antd/dist/antd.css'
 
@@ -42,7 +43,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App2/>
+    <App/>
   </ApolloProvider>,
   document.getElementById('root')
 )

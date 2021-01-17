@@ -1,7 +1,7 @@
 const {v4: uuid} = require("uuid/")
 const Mutation = {
     async createUser(parent, {data}, { User, pubsub }, info) {
-        console.log(data)
+        //console.log(data)
         const user = {
             id: uuid(),
             popularity: 0,

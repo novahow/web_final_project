@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import useChat from './useChat'
 import {Button, Input, message, Tag} from 'antd'
 
-function App2() {
+function App2(props) {
     const { retUser, getUsers, addUser } = useChat()
     const [ newUserData, setNewUserData ] = useState({})
     const [ users, setUsers ] = useState([]);
@@ -10,6 +10,8 @@ function App2() {
     console.log(users)
     return (
         <>
+        <input onChange={(e)=> props.changeDepartment(e.target.value)} placeholder="search department?"></input>
+        <button onClick={()=>props.changeMst(0)}>go to Gallary</button>
         <div className="App2">
             <input placeholder="name?" onChange={(e) => {
                 const cur_user = newUserData;

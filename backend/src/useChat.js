@@ -14,10 +14,10 @@ const useChat = () => {
   const {loading, data, subscribeToMore} = useQuery(USERS_QUERY)
   //console.log(data)
   const [ creatUser ] = useMutation(CREATE_USER_MUTATION)
-  const [ allUsers, setAllUsers] = useState([])
+  //const [ allUsers, setAllUsers] = useState([])
   //const [users, setUsers] = useState([])
 
-  
+  /*
   useEffect(() => {
     if(data){
       //console.log('aaa')
@@ -25,7 +25,7 @@ const useChat = () => {
       //console.log('bbb')
       setAllUsers(data.users)
     }
-  }, [data])
+  }, [data])*/
   useEffect(() => {
     subscribeToMore({
       document: USERS_SUBSCRIPTION,
@@ -42,8 +42,13 @@ const useChat = () => {
   
   
   const getUsers = async (reqdepartment) => {
-    //console.log(allUsers.filter(({department})=>department === reqdepartment))
-    return allUsers.filter(({department})=>department === reqdepartment)
+    //console.log('aaa')
+    //console.log(reqdepartment)
+    //console.log('bbb')
+    //console.log(data.users)
+    //console.log(data.users.filter(({department})=>department === reqdepartment))
+    if(!reqdepartment || reqdepartment === "") return data.users
+    return data.users.filter(({department})=>department === reqdepartment)
   }
 
   const addUser = (user) => {

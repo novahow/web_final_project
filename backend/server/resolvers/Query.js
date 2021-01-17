@@ -1,6 +1,6 @@
 const Query = {
     users(parent, args, { User }, info) {
-        console.log(args)
+        //console.log(args)
         if(!args.query.department){
             return User.find({})
         }
