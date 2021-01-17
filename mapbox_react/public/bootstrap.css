@@ -3179,6 +3179,7 @@
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
+    overflow:visible;
   }
   
   .dropdown-menu-left {
@@ -3344,6 +3345,7 @@
     white-space: nowrap;
     background-color: transparent;
     border: 0;
+    overflow: visible;
   }
   
   .dropdown-item:hover, .dropdown-item:focus {
@@ -3366,6 +3368,7 @@
   
   .dropdown-menu.show {
     display: block;
+    overflow: visible;
   }
   
   .dropdown-header {
