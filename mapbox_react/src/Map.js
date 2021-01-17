@@ -4,6 +4,7 @@ import Intro from './Intro'
 // import { useQuery, useMutation } from "@apollo/react-hooks";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Dep_rank from './Dep_rank';
+import Nav from './Navbar'
 const Map = (props) => {
 
   const [lng, setLng] = useState(121.5392);
@@ -75,7 +76,7 @@ const Map = (props) => {
 
 
   return (
-    <div>
+    <div className='fuck'>
       <ul>
         <li><a class="active" href="#login">{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>
@@ -91,3 +92,5 @@ const Map = (props) => {
 }
 
 export default Map
+  /*
+*/

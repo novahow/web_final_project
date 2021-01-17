@@ -34,7 +34,7 @@ function App() {
                         <Input type="text" placeholder="Name" />
                         <Input type="email" placeholder="Email" />
                         <Input type="password" placeholder="Password" />
-                        <button>還是 Sign In</button>
+                        <button className='cbutton'>還是 Sign In</button>
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
@@ -53,7 +53,7 @@ function App() {
                         <Input type="password" placeholder="Password" />
                         {console.log(windowmaster)}
                         <a href="#">Forgot your password?</a>
-                        <button onClick={() => { console.log('>>>'); if (windowmaster != "") setPressed(true) }}>Sign In</button>
+                        <button className='cbutton' onClick={() => { console.log('>>>'); if (windowmaster != "") setPressed(true) }}>Sign In</button>
                     </form>
                 </div>
                 <div className="overlay-container">
@@ -61,12 +61,12 @@ function App() {
                         <div className="overlay-panel overlay-left">
                             <h1>Welcome Back!</h1>
                             <p>To keep connected with us please login with your personal info</p>
-                            <button className="ghost" id="signIn" onClick={() => containerref.current.classList.remove("right-panel-active")}>又是Sign In</button>
+                            <button className="cbutton" id="ghost" onClick={() => containerref.current.classList.remove("right-panel-active")}>回去Sign In</button>
                         </div>
                         <div className="overlay-panel overlay-right">
                             <h1>Hello, Friend!</h1>
                             <p>Enter your personal details and start journey with us</p>
-                            <button className="ghost" id="signUp" onClick={() => containerref.current.classList.add("right-panel-active")}>Sign Up</button>
+                            <button className="cbutton" id="ghost" onClick={() => containerref.current.classList.add("right-panel-active")}>Sign Up</button>
                         </div>
                     </div>
                 </div>
