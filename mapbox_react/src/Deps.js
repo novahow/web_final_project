@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
+import useChat from './useChat'
 const Deps = (props) => {
     const [exp, setExp] = useState(false)
+    const { retUser, getUsers, addUser } = useChat()
+    const [newUserData, setNewUserData] = useState({})
+    const [users, setUsers] = useState([]);
+    const [department, setDepartment] = useState('');
+
     return (
         <div>
             <div className='txtimg'>
