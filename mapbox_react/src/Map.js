@@ -76,8 +76,8 @@ const Map = (props) => {
 
 
   return (
-    <div className='fuck'>
-      <ul>
+    <div >
+      <ul className='fuck'>
         <li><a class="active" href="#login">{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>
         <li><a href="#contact">Contact</a></li>
