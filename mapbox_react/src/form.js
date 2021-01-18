@@ -20,6 +20,10 @@ const Form = (props) => {
         history.push('/map');
     }*/
 
+    function checkuser([username, passwd]) {
+
+    }
+
     return (
         <div className="container" id="container" ref={containerref}>
 

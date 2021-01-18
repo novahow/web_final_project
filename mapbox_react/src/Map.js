@@ -20,7 +20,7 @@ const Map = (props) => {
     { dep: 'ELITE', cord: [121.5382, 25.0140] },
     { dep: 'LAW', cord: [121.5436, 25.0206] },
     { dep: 'INDUSTRY', cord: [121.5383, 25.0182] }];
-  console.log('幹', props.name)
+  // console.log('幹', props.name)
   useEffect(() => {
     //async = () => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW50aWNkdWtlIiwiYSI6ImNramg3NWQzdjZnMjUycXJ3NGZ0MGZzMzcifQ.q5BvzHDORxEQCIJ5EZondQ';
