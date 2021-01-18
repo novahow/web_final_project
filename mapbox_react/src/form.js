@@ -12,6 +12,7 @@ const Form = (props) => {
     const mst = props.page;
     const history = useHistory();
     const loc = useLocation();
+    const [password, setPassword] = useState('');
     useEffect(() => {
         bodyRef.current.focus();
     }, [mst])
@@ -56,12 +57,14 @@ const Form = (props) => {
                             /*type="email"*/ placeholder="Username" ref={bodyRef}
                         value={windowmaster}
                         onChange={(e) => setMaster(e.target.value)} />
-                    <Input type="password" placeholder="Password" />
+                    <Input type="password" placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
                     {console.log(windowmaster)}
                     <a href="#">Forgot your password?</a>
                     <button className='cbutton' onClick={() => {
                         console.log('>>>');
-                        if (windowmaster != "") {
+                        if (windowmaster != "" && password != '') {
                             setPressed(1);
                         }
                     }}>Sign In
