@@ -8,10 +8,11 @@ import loading from './images/loading.gif'
 
 function PhotoLibrary(props) {
     const {getUsers} = useChat()
-    const defaultUsers = {photo: loading, name: "loading..."}
+    const defaultUsers = {photo: "https://www.transparenttextures.com/patterns/brushed-alum.png", name: "loading..."}
     const [users, setUsers] = useState([defaultUsers])
     const [usersIdx, setUsersIdx] = useState(0)
     const [usersUrl, serUsersUrl] = useState(loading)
+    const [rating, setRating] = useState(0)
     useEffect(async ()=>{
         const Users = await getUsers(props.department)
         console.log(props.department)
@@ -23,37 +24,57 @@ function PhotoLibrary(props) {
     },[])
     
     return (
-        <div className="image-viewer__container">
-            <button onClick={()=> props.changeMst(1)}>Home</button>
-    <div className="image-viewer__title">{users[usersIdx].name}</div>
-            <p>{users[usersIdx].department}</p>
-            <div className="image-viewer__main">
-                <div className="image-viewer__button">
-                    <img src={back} id="previous" onClick={() => 
-                        {if(usersIdx - 1 > 0){
-                            setUsersIdx(0)
-                            setUsersIdx(usersIdx - 1)
-                        }}
-                    }/>
-                </div>
-                <div className="image-viewer__display">
-                    <img id="display" src={users[usersIdx].photo}/>
-                    <div className="image-viewer__display-source-wrapper">
-                        <span>
-                            <a id="source"></a>
+        <body>
+            <div className="intro-container">
+                <div className="intro-wrap">
+                    <form className="intro-form validate-form">
+                        <span className="intro-title">
+                            Name : {users[usersIdx].name}
                         </span>
+                        <span className="intro-title">
+                            Age : {users[usersIdx].age}
+                        </span>
+                        <span className="intro-title">
+                            Department : {users[usersIdx].department}
+                        </span>
+                        <span className="intro-title">
+                            FB : {users[usersIdx].FB}
+                        </span>
+                        <span className="intro-title">
+                            IG : {users[usersIdx].IG}
+                        </span>
+                        <label className="label-input" for="rating"> 
+                            Rating if you like it !
+                        </label>
+                        <div className="wrap-input">
+                            <input className="input" placeholder="Eg. (Unlike)0~100(Like)"></input> 
+                            <span className="focus-input"> </span>
+                        </div>
+                        <div className="intro-button">
+                            <button className="send" onClick={()=> props.changeMst(1)}>
+                                <span> Send </span>
+                            </button>
+                        </div>
+                    </form>
+                    <div className="intro-more flex-col-c-m">
+                        <button className onClick={()=> props.changeMst(1)}>Home </button>
+                        <div className="image-viewer">
+                            <div className="left-botton">
+
+                            </div>
+                            <div className="display">
+                                <img src={users[usersIdx].photo} />
+                            </div>
+                            <div className="right-button">
+                            </div>
+                        </div>
+                        <div className="star">
+
+                        </div>
                     </div>
                 </div>
-                <div className="image-viewer__button">
-                    <img src={next} id="next" onClick={() => 
-                        {if(usersIdx + 1 < users.length){
-                            setUsersIdx(0)
-                            setUsersIdx(usersIdx + 1)
-                        }}
-                    }/>
-                </div>
-            </div>
-        </div>
+            </div>    
+        </body>
     )
 }
 
