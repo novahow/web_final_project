@@ -145,6 +145,29 @@ input.input {
 	opacity: 0.8;
 }
 
+.home {
+	width: 90px;
+	height: 40px;
+	border-radius: 10%;
+	background-color: #8fbc8f;
+	color: white;
+}
+
+.home:hover span {
+	display: none;
+}
+
+.home:hover:before {
+	content: "Return"
+}
+
+.home:hover {
+	background-color: #d3d3d3;
+	color: #4b0082;
+	transform: scale(1.25) perspective(1px);
+	opacity: 0.8;
+}
+
 .intro-more {
 	width: 50%;
 	background-image: url(https://i.pinimg.com/originals/90/80/60/9080607321ab98fa3e70dd24b2513a20.gif); 
@@ -163,12 +186,66 @@ input.input {
 	height: 600px;
 }
 
+.display {
+	background-color: black;
+}
+
+.button_blank {
+	width: 50%;
+	height: 100px;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .left-button {
 	height: 100px;
 	width: 100px;
 }
 
+.nb {
+	height: 50px;
+	width: 50px;
+	font-family: serif;
+	font-size: 20px; 
+	font-weight: bold;
+}
+
 .right-button {
 	height: 100px;
 	width: 100px;
+}
+
+.pb {
+	height: 50px;
+	width: 50px;
+	font-family: serif;
+	font-size: 20px; 
+	font-weight: bold;
+}
+
+.star {
+	color: white;
+	font-size: 25px;
+}
+
+.rating {
+	width: 150px;
+	unicode-bidi: bidi-override;
+	direction: rtl;
+	text-align: center;
+}
+
+.rating > span {
+	display: inline-block;
+	position: relative;
+	width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
 }

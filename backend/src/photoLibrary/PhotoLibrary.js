@@ -1,13 +1,13 @@
 import './styles.css'
 import React, {useEffect, useState } from 'react'
 import {Button, Input, message, Tag } from 'antd'
-import next from './images/next.png'
-import back from './images/back.png'
 import useChat from '../useChat'
 import loading from './images/loading.gif'
 
 function PhotoLibrary(props) {
     const {getUsers} = useChat()
+    const rightarrow = "->"
+    const leftarrow = "<-"
     const defaultUsers = {photo: "https://www.transparenttextures.com/patterns/brushed-alum.png", name: "loading..."}
     const [users, setUsers] = useState([defaultUsers])
     const [usersIdx, setUsersIdx] = useState(0)
@@ -52,24 +52,47 @@ function PhotoLibrary(props) {
                         </div>
                         <div className="intro-button">
                             <button className="send" onClick={()=> props.changeMst(1)}>
-                                <span> Send </span>
+                                <span> SEND </span>
                             </button>
                         </div>
                     </form>
                     <div className="intro-more flex-col-c-m">
-                        <button className onClick={()=> props.changeMst(1)}>Home </button>
+                        <button className="home" onClick={()=> props.changeMst(1)}>
+                            <span> HOME </span>
+                        </button>
                         <div className="image-viewer">
-                            <div className="left-botton">
-
-                            </div>
                             <div className="display">
                                 <img src={users[usersIdx].photo} />
                             </div>
-                            <div className="right-button">
-                            </div>
                         </div>
-                        <div className="star">
-
+                        <div className="button_blank">
+                            <div className="prev_botton">
+                                <button className="pb" onClick={() => 
+                                    {if(usersIdx - 1 > 0){
+                                        setUsersIdx(0)
+                                        setUsersIdx(usersIdx - 1)
+                                    }}
+                                }>
+                                    <span> {leftarrow} </span>
+                                </button>
+                            </div>
+                            <div className="rating">
+                                <span className="star">☆</span>
+                                <span className="star">☆</span>
+                                <span className="star">☆</span>
+                                <span className="star">☆</span>
+                                <span className="star">☆</span>
+                            </div>
+                            <div className="next_botton">
+                                <button className="nb" onClick={() => 
+                                    {if(usersIdx + 1 < users.length){
+                                        setUsersIdx(0)
+                                        setUsersIdx(usersIdx + 1)
+                                    }}
+                                }>
+                                    <span> {rightarrow} </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
