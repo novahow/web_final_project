@@ -14,7 +14,21 @@ export const USERS_SUBSCRIPTION = gql`
                 birthday
                 popularity
                 photo
+                gender
             }
         }
+    }
+`
+export const LOGIN_USERS_SUBSCRIPTION = gql`
+    subscription {
+        loginUser {
+            mutation
+            data {
+                id
+                name
+                passwd
+                favorite
+            }
+        } 
     }
 `

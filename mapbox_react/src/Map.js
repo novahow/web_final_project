@@ -81,7 +81,7 @@ const Map = (props) => {
   return (
     <div >
 
-      <Nav switch={props.switch} arr={dep_arr} />
+      <Nav switch={props.switch} arr={dep_arr} name={props.name} />
       {/*      <Newnav /><ul className='fuck'>
         <li ><a className="active" href="#login" onClick={() => props.switch(0)}>{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>

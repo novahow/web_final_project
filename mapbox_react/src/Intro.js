@@ -24,20 +24,25 @@ const Intro = (props) => {
             <button className='back' onClick={back}>
                 back
             </button>
-            { !exp ? (<div className="txtimg">
+            {!exp ? (<div className="txtimg">
                 <div className="text">
                     {dp}
                 </div>
-                <img src=
+                <button className={exp ? 'trans' : ''} onClick={() => { exp ? setExp(false) : setExp(true) }}>
+                    <i class="fa fa-play fa-2x"></i>
+                </button>
+
+                {/*<img src=
                     {exp ? ("https://i.imgur.com/nZP0hWp.png")
-                        : ("https://i.imgur.com/4MMlH1M.png")}
-                    onClick={() => { exp ? setExp(false) : setExp(true) }} />
+                        : ("http://clipart-library.com/images/5cRraerKi.jpg")}
+                    onClick={() => { exp ? setExp(false) : setExp(true) }} />*/}
 
             </div>) : (sea_in_deps[dp].map(e => (
                 <Deps ele={e} exp={exp}
                     switch={props.switch} dep={props.dep} />
-            )))}
-        </div>
+            )))
+            }
+        </div >
     );
 };
 

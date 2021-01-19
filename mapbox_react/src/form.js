@@ -3,9 +3,11 @@ import { Button, Input, message, Tag } from 'antd'
 // import { Router, Route, hashHistory, IndexRoute, Switch } from 'react-router';
 import { useHistory, useLocation, NavLink, useParams, Switch, Route } from "react-router-dom";
 import { alert, prompt } from '@ungap/global-this';
+import useChat from './useChat'
 const Form = (props) => {
-    const setMaster = props.change;
-    const windowmaster = props.master;
+    const { getUsers, addUser, addLoginUser, checkLogin } = useChat()
+    const setMaster1 = props.change;
+    // const windowmaster = props.master;
     //const bodyRef = props.ref;
     const bodyRef = useRef(null)
     const containerref = props.conref;
@@ -14,6 +16,13 @@ const Form = (props) => {
     const history = useHistory();
     const loc = useLocation();
     const [password, setPassword] = useState('');
+    const [windowmaster, setMaster] = useState('');
+    const [upmaster, setupmaster] = useState('')
+    const [uppwd, setuppwd] = useState('')
+    const [loginState, setLoginState] = useState("???")
+    const [LoginUserData, setLoginUserData] = useState({})
+    const [signup, setSignup] = useState('???')
+    const [newLoginUserData, setNewLoginUserData] = useState({})
     useEffect(() => {
         bodyRef.current.focus();
     }, [mst])
@@ -32,17 +41,34 @@ const Form = (props) => {
             <div className="form-container sign-up-container">
                 <form action="#">
                     <h1>Create Account </h1>
-                    <h1>(並不能好嗎)</h1>
                     <div className="social-container">
                         <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
                         <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
                         <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <Input type="text" placeholder="Name" />
+                    <Input type="text" placeholder="Username"
+                        value={upmaster}
+                        onChange={e => setupmaster(e.target.value)} />
                     <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
-                    <button className='cbutton'>還是 Sign In</button>
+                    <Input type="password" placeholder="Password"
+                        value={uppwd}
+                        onChange={(e) => setuppwd(e.target.value)}
+                    />
+                    <button className='cbutton' onClick={async () => {
+                        if (upmaster != "" && uppwd != '') {
+                            const u = newLoginUserData;
+                            u['name'] = upmaster;
+                            u['passwd'] = uppwd;
+                            setNewLoginUserData(u);
+
+                            const { state, data } = await addLoginUser(newLoginUserData);
+                            setSignup(state);
+                            (state == 'SUCCESS') ? message.success(state)
+                                : message.error(state);
+                            console.log(state, data);
+                        }
+                    }}>Sign Up</button>
                 </form>
             </div>
             <div className="form-container sign-in-container">
@@ -63,10 +89,25 @@ const Form = (props) => {
                         onChange={(e) => setPassword(e.target.value)} />
                     {console.log(windowmaster)}
                     <a href="#" /*onClick={() => { alert("乾我p4?") }*/>Forgot your password?</a>
-                    <button className='cbutton' onClick={() => {
+                    <button className='cbutton' onClick={async () => {
                         console.log('>>>');
                         if (windowmaster != "" && password != '') {
-                            setPressed(1);
+                            const u = LoginUserData;
+                            u['name'] = windowmaster;
+                            u['passwd'] = password;
+                            setLoginUserData(u);
+
+                            const { state, data } = await checkLogin(LoginUserData);
+                            console.log(data)
+                            setLoginState(state);
+                            if (state == 'SUCCESS') {
+                                message.success(state)
+                                setMaster1(windowmaster);
+                                setPressed(1);
+                            }
+                            else {
+                                message.error(state);
+                            }
                         }
                     }}>Sign In
                         {/*<NavLink
@@ -80,9 +121,9 @@ const Form = (props) => {
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
+                        <h1>Welcome To NTU Beauty!</h1>
                         <p>To keep connected with us please login with your personal info</p>
-                        <button className="cbutton" id="ghost" onClick={() => containerref.current.classList.remove("right-panel-active")}>回去Sign In</button>
+                        <button className="cbutton" id="ghost" onClick={() => containerref.current.classList.remove("right-panel-active")}>Sign In</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>Hello, Friend!</h1>

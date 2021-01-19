@@ -3,28 +3,35 @@ import { Button, Input, message, Tag } from 'antd'
 import Dep_rank from './Dep_rank';
 import Ranking from './Ranking'
 import Newnav from './Newnav'
+import Create from './Beauty';
 const Nav = (props) => {
     const dep_arr = props.arr;
-
+    const [modalShow, setModalShow] = React.useState(false);
     return (
         <div >
             <div className="area"></div>
             <nav className="main-menu">
                 <ul>
                     <li>
-                        <a href="http://justinfarrow.com">
+                        <a href="#">
                             <i className="fa fa-home fa-2x"></i>
                             <span className="nav-text">
-                                Dashboard
-                        </span>
+                                Welcome,   {(props.name).toUpperCase()}
+                            </span>
                         </a>
 
                     </li>
                     <li className="has-subnav">
                         <a href="#">
                             <i className="fa fa-laptop fa-2x"></i>
-                            <span className="nav-text">
-                                Stars Components
+                            <span className='nav-text'>
+                                <button className="nav-link" variant="primary" onClick={() => setModalShow(true)}>
+                                    Add
+                            </button>
+                                <Create
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                    className="fuck" />
                             </span>
                         </a>
                     </li>

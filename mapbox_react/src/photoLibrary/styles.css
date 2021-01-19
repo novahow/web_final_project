@@ -138,6 +138,7 @@ input.input {
 	border-radius: 10%;
 	background-color: #8fbc8f;
 	color: white;
+	align-self: center;
 }
 
 .home:hover span {
@@ -167,6 +168,7 @@ input.input {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-evenly;
 }
 
 .intro-more button{
@@ -175,20 +177,21 @@ input.input {
 
 .image-viewer {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 600px;
+	flex-direction: column;
+	/*align-items: center;*/
+	justify-content: space-around;
+	width: 500px;
 }
 
 .image-viewer img{
-	width: max-content;
+	width: 500px;
 	height: max-content;
 }
 
 .display2 {
 	background-color: black;
-	height: max-content;
-	width: max-content;
+	height: min-content;
+	width: min-content;
 }
 
 .button_blank {

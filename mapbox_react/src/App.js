@@ -13,18 +13,11 @@ import { Router, Route, hashHistory, IndexRoute, Switch } from 'react-router';
 function App() {
     // const { status, opened, messages, sendMessage, clearMessages } = useChat()
 
-    const [windowmaster, setMaster] = useState('')
+    const [windowmaster, setMaster1] = useState('')
     const [mst, setPressed] = useState(0)
     //const bodyRef = useRef(null)
     const containerref = useRef(null)
-    const [password, setPassword] = useState('')
-    const [password_again, setPassword_again] = useState('')
-    const [signtype, setSigntype] = useState('true')
     const [dep, setDep] = useState('')
-    const { getUsers, addUser } = useChat()
-    const changeMst = (nxtMst) => {
-        setPressed(nxtMst)
-    }
     /*useEffect(() => {
         bodyRef.current.focus();
     }, mst)*/
@@ -56,9 +49,8 @@ function App() {
     //useEffect = (() => {
     if (mst == 0) {
         return (
-            <Form change={setMaster}
-                master={windowmaster} conref={containerref}
-                switch={changeMst} page={mst} />
+            <Form change={setMaster1} conref={containerref}
+                switch={setPressed} page={mst} />
         )
     }
     else if (mst == 1) {

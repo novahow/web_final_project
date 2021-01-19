@@ -14,16 +14,15 @@ const Deps = (props) => {
                 <div className='text'>
                     {props.ele}
                 </div>
-                <img src=
-                    {exp ? ("https://i.imgur.com/nZP0hWp.png")
-                        : ("https://i.imgur.com/4MMlH1M.png")}
-                    onClick={() => { exp ? setExp(false) : setExp(true) }} />
+                <button className={exp ? 'trans' : ''} onClick={() => { exp ? setExp(false) : setExp(true) }}>
+                    <i class="fa fa-play fa-2x"></i>
+                </button>
 
             </div>
             <span>
                 {exp ?
                     (<span className='bg'>
-                        <button className='goodbutton'> Boy </button>
+                        <button className='goodbutton' onClick={() => { props.dep(props.ele); props.switch(2) }}> Boy </button>
                         <button className='goodbutton' onClick={() => { props.dep(props.ele); props.switch(2) }}> Girl </button>
                     </span>
                     ) : (<div></div>)}

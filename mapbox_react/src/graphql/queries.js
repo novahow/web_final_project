@@ -12,6 +12,18 @@ export const USERS_QUERY = gql`
       birthday
       popularity
       photo
+      totalVoting
+    }
+  }
+`
+
+export const LOGIN_USERS_QUERY = gql`
+  query {
+    loginUsers(query: {name: null, passwd: null}) {
+      id
+      name
+      passwd
+      favorite
     }
   }
 `
