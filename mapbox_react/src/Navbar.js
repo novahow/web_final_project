@@ -1,91 +1,110 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { Button, Input, message, Tag } from 'antd'
-
+import Dep_rank from './Dep_rank';
+import Ranking from './Ranking'
+import Newnav from './Newnav'
 const Nav = (props) => {
+    const dep_arr = props.arr;
+
     return (
-        <div class="container">
-            <nav>
-                <ul class="mcd-menu">
+        <div >
+            <div className="area"></div>
+            <nav className="main-menu">
+                <ul>
                     <li>
-                        <a href="">
-                            <i class="fa fa-home"></i>
-                            <strong>Home</strong>
-                            <small>sweet home</small>
+                        <a href="http://justinfarrow.com">
+                            <i className="fa fa-home fa-2x"></i>
+                            <span className="nav-text">
+                                Dashboard
+                        </span>
+                        </a>
+
+                    </li>
+                    <li className="has-subnav">
+                        <a href="#">
+                            <i className="fa fa-laptop fa-2x"></i>
+                            <span className="nav-text">
+                                Stars Components
+                            </span>
+                        </a>
+                    </li>
+                    <li className="has-subnav">
+                        <a href="#">
+                            <i className="fa fa-list fa-2x"></i>
+
+                            {/*<div className="dropdown ">
+                                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Rankings
+                                    </button>
+                                    <div className="dropdown-menu">
+                                        {props.arr.map(e => (<Ranking arr={arr} dep={e.dep} />))}
+                                    </div>
+                                </div>*/}
+                            <Newnav arr={props.arr} />
+                        </a>
+                    </li>
+                    <li className="has-subnav">
+                        <a href="#">
+                            <i className="fa fa-folder-open fa-2x"></i>
+                            <span className="nav-text">
+                                Pages
+                        </span>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="active">
-                            <i class="fa fa-edit"></i>
-                            <strong>About us</strong>
-                            <small>sweet home</small>
+                        <a href="#">
+                            <i className="fa fa-bar-chart-o fa-2x"></i>
+                            <span className="nav-text">
+                                Graphs and Statistics
+                        </span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i class="fa fa-gift"></i>
-                            <strong>Features</strong>
-                            <small>sweet home</small>
+                        <a href="#">
+                            <i className="fa fa-font fa-2x"></i>
+                            <span className="nav-text">
+                                Quotes
+                        </span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i class="fa fa-globe"></i>
-                            <strong>News</strong>
-                            <small>sweet home</small>
+                        <a href="#">
+                            <i className="fa fa-table fa-2x"></i>
+                            <span className="nav-text">
+                                Tables
+                        </span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i class="fa fa-comments-o"></i>
-                            <strong>Blog</strong>
-                            <small>what they say</small>
-                        </a>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-globe"></i>Mission</a></li>
-                            <li>
-                                <a href="#"><i class="fa fa-group"></i>Our Team</a>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-female"></i>Leyla Sparks</a></li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-male"></i>Gleb Ismailov</a>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
-                                            <li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
-                            <li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="fa fa-picture-o"></i>
-                            <strong>Portfolio</strong>
-                            <small>sweet home</small>
+                        <a href="#">
+                            <i className="fa fa-map-marker fa-2x"></i>
+                            <span className="nav-text">
+                                Maps
+                        </span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i class="fa fa-envelope-o"></i>
-                            <strong>Contacts</strong>
-                            <small>drop a line</small>
+                        <a href="#">
+                            <i className="fa fa-info fa-2x"></i>
+                            <span className="nav-text">
+                                Documentation
+                        </span>
                         </a>
                     </li>
-                    <li class="float">
-                        <a class="search">
-                            <input type="text" value="search ..." />
-                            <button><i class="fa fa-search"></i></button>
-                        </a>
-                        <a href="" class="search-mobile">
-                            <i class="fa fa-search"></i>
+                </ul>
+
+                <ul className="logout">
+                    <li>
+                        <a href="#">
+                            <i className="fa fa-power-off fa-2x"></i>
+                            <span className="nav-text" onClick={() => props.switch(0)}>
+                                Logout
+                            </span>
                         </a>
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div >
     )
 }
 

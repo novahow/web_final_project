@@ -5,6 +5,7 @@ import Intro from './Intro'
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Dep_rank from './Dep_rank';
 import Nav from './Navbar'
+import Newnav from './Newnav'
 const Map = (props) => {
 
   const [lng, setLng] = useState(121.5392);
@@ -20,7 +21,7 @@ const Map = (props) => {
     { dep: 'ELITE', cord: [121.5382, 25.0140] },
     { dep: 'LAW', cord: [121.5436, 25.0206] },
     { dep: 'INDUSTRY', cord: [121.5383, 25.0182] }];
-  // console.log('幹', props.name)
+  console.log('幹', props.name)
   useEffect(() => {
     //async = () => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW50aWNkdWtlIiwiYSI6ImNramg3NWQzdjZnMjUycXJ3NGZ0MGZzMzcifQ.q5BvzHDORxEQCIJ5EZondQ';
@@ -79,12 +80,14 @@ const Map = (props) => {
 
   return (
     <div >
-      <ul className='fuck'>
+
+      <Nav switch={props.switch} arr={dep_arr} />
+      {/*      <Newnav /><ul className='fuck'>
         <li ><a className="active" href="#login" onClick={() => props.switch(0)}>{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
-      </ul>
+      </ul>*/}
       <div className='sidebarStyle'>
         <div>Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</div>
       </div>

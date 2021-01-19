@@ -7,14 +7,18 @@ const Dep_rank = (props) => {
     const arr = ['1', '2', '3'];
     return (
 
-        <div>
+        <div className='dropdown dropright'>
+
+            {/*
             <a href="#ranking" onClick={() => exp ? setExp(false) : setExp(true)}>Rankings</a>
 
             <div className='dep'>{exp ?
                 (props.arr.map(e => (<Ranking arr={arr} dep={e.dep} />)))
                 : (<div></div>)
             }
-            </div>
+        </div>*/}
+            Ranking
+            {props.arr.map(e => (<Ranking arr={arr} dep={e.dep} />))}
 
         </div>
 

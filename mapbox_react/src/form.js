@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Button, Input, message, Tag } from 'antd'
 // import { Router, Route, hashHistory, IndexRoute, Switch } from 'react-router';
 import { useHistory, useLocation, NavLink, useParams, Switch, Route } from "react-router-dom";
+import { alert, prompt } from '@ungap/global-this';
 const Form = (props) => {
     const setMaster = props.change;
     const windowmaster = props.master;
@@ -61,7 +62,7 @@ const Form = (props) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} />
                     {console.log(windowmaster)}
-                    <a href="#">Forgot your password?</a>
+                    <a href="#" /*onClick={() => { alert("乾我p4?") }*/>Forgot your password?</a>
                     <button className='cbutton' onClick={() => {
                         console.log('>>>');
                         if (windowmaster != "" && password != '') {
