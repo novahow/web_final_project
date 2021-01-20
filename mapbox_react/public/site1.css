@@ -522,11 +522,17 @@ button{
   justify-content: space-around;
   align-items: center;
   padding-top: 10px;
-  background: linear-gradient(to bottom right, #4DA0B0 0%, #D39D38 100%);
+  background: #f1a2b5;
+  color: white;
+}
+
+.txtimg.txt {
+  
 }
 
 .txtimg:hover{
   background-color: white;
+  color: black;
 }
 
 .txtimg div{

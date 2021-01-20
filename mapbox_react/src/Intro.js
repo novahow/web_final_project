@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import Deps from './Deps'
 
 const sea_in_deps = {
-    'CSEE': ['CSIE', 'EE'], 'LAW': ['法律'],
+    'CSEE': ['資工', '電機'], 'LAW': ['法律'],
     'INDUSTRY': ['化工', '土木', '機械', '工海', '材料'],
     'ELITE': ['財金', '會計', '國企', '工管', '資管'],
     'SOCIAL': ['經濟', '政治', '社工']
