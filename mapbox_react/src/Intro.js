@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useQuery, useMutation } from "@apollo/client"
 import Deps from './Deps'
-
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 const sea_in_deps = {
     'CSEE': ['資工', '電機'], 'LAW': ['法律'],
     'INDUSTRY': ['化工', '土木', '機械', '工海', '材料'],
@@ -10,6 +14,8 @@ const sea_in_deps = {
 }
 
 const Intro = (props) => {
+
+
     const [exp, setExp] = useState(false)
     console.log('???', props)
     const [dp, setDp] = useState(props.value.dep)

@@ -45,9 +45,9 @@ const Form = (props) => {
                 <form action="#">
                     <h1>Create Account </h1>
                     <div className="social-container">
-                       <Facebook className="icon" color="primary"/>
-                       <Instagram className="icon" style={{fill: "pink"}}/>
-                       <LinkedIn className="icon" color="primary"/>    
+                        <Facebook className="icon" color="primary" />
+                        <Instagram className="icon" style={{ fill: "pink" }} />
+                        <LinkedIn className="icon" color="primary" />
                     </div>
                     <span>or use your email for registration</span>
                     <Input type="text" placeholder="Username"
@@ -78,9 +78,9 @@ const Form = (props) => {
                 <form action="#">
                     <h1>Sign in</h1>
                     <div className="social-container">
-                        <Facebook className="icon" color="primary"/>
-                        <Instagram className="icon" style={{fill: "pink"}}/>
-                        <LinkedIn className="icon" color="primary"/> 
+                        <Facebook className="icon" color="primary" />
+                        <Instagram className="icon" style={{ fill: "pink" }} />
+                        <LinkedIn className="icon" color="primary" />
                     </div>
                     <span>or use your account</span>
                     <Input
@@ -114,8 +114,6 @@ const Form = (props) => {
                         }
                     }}>Sign In
                         {/*<NavLink
-
-
                             
                             to={"/map/" + windowmaster}>Sign In</NavLink>*/}
                     </button>

@@ -55,8 +55,8 @@ function App() {
         )
     }
     else if (mst == 1) {
-        return (<Map name={windowmaster} 
-            switch={setPressed} dep={setDep} page={mst}
+        return (<Map name={windowmaster} switch
+            ={setPressed} dep={setDep} page={mst}
             gen={setGend} />)
     }
     else {

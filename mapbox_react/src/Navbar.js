@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { Button, Input, message, Tag } from 'antd'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import Dep_rank from './Dep_rank';
 import Ranking from './Ranking'
 import Newnav from './Newnav'
 import Create from './Beauty';
 const Nav = (props) => {
     const dep_arr = props.arr;
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
+    const useStyles = makeStyles((theme) => ({
+        button: {
+            margin: theme.spacing(1),
+            color: 'white',
+        },
+    }));
+
+    const classes = useStyles();
     return (
         <div >
             <div className="area"></div>
@@ -25,9 +34,9 @@ const Nav = (props) => {
                         <a href="#">
                             <i className="fa fa-laptop fa-2x"></i>
                             <span className='nav-text'>
-                                <button className="nav-link" variant="primary" onClick={() => setModalShow(true)}>
+                                <span className={classes.button} className='nav-link' variant="primary" onClick={() => setModalShow(true)}>
                                     Add
-                            </button>
+                                </span >
                                 <Create
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}

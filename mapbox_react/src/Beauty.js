@@ -52,46 +52,46 @@ const Create = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form action="/action_page.php">
-                    <TextField placeholder='name'
+                <form>
+                    <TextField label='name'
                         onChange=
                         {(e) => setName(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='age'
+                    <TextField label='age'
                         onChange=
                         {(e) => setAge(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='department'
+                    <TextField label='department'
                         onChange=
                         {(e) => setDep(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='fb'
+                    <TextField label='fb'
                         onChange=
                         {(e) => setFb(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='ig'
+                    <TextField label='ig'
                         onChange=
                         {(e) => setIg(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='birth'
+                    <TextField label='birth'
                         onChange=
                         {(e) => setBirth(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='photo_url'
+                    <TextField label='photo_url'
                         onChange=
                         {(e) => setPhoto(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
-                    <TextField placeholder='gender(0~2)'
+                    <TextField label='gender(0~2)'
                         onChange=
                         {(e) => setGend(e.target.value)}
-                        fullWidth
+                        fullWidth id="standard-basic"
                     />
                 </form>
             </Modal.Body>
