@@ -46,7 +46,7 @@ const Form = (props) => {
                     <h1>Create Account </h1>
                     <div className="social-container">
                        <Facebook className="icon" color="primary"/>
-                       <Instagram className="icon"/>
+                       <Instagram className="icon" style={{fill: "pink"}}/>
                        <LinkedIn className="icon" color="primary"/>    
                     </div>
                     <span>or use your email for registration</span>
