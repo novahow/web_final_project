@@ -49,20 +49,20 @@ function PhotoLibrary(props) {
     const classes = useStyles();
 
     const useStyles2 = makeStyles({
-      root: {
-        maxWidth: 600,
-        flexGrow: 1,
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
-      },
-      button:{
-        background: 'white',
-        fontWeight: 'bold',
-        color: 'black',
-        '&:hover': {
-            background: 'black',
-            color: 'white'
+        root: {
+            maxWidth: 600,
+            flexGrow: 1,
+            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+        },
+        button: {
+            background: 'white',
+            fontWeight: 'bold',
+            color: 'black',
+            '&:hover': {
+                background: 'black',
+                color: 'white'
+            }
         }
-      }
     });
     const classes2 = useStyles2();
     const theme = useTheme();
@@ -119,7 +119,7 @@ function PhotoLibrary(props) {
                         <div className="display">
                             <img src={users[usersIdx].photo} />
                         </div>
-                    </div>                        
+                    </div>
                     <div className="average-rating">
                         <div className={classes.root}>
                             <Rating
@@ -137,42 +137,42 @@ function PhotoLibrary(props) {
                     </div>
                     <div className="button_blank">
                         <MobileStepper
-                          variant="dots"
-                          steps={users.length - 1}
-                          position="static"
-                          activeStep={activeStep}
-                          className={classes2.root}
-                          nextButton={
-                            <Button size="small" onClick={() => {
-                                if(usersIdx + 1 < users.length)
-                                    setUsersIdx(usersIdx + 1)
-                                ;handleNext()
+                            variant="dots"
+                            steps={users.length - 1}
+                            position="static"
+                            activeStep={activeStep}
+                            className={classes2.root}
+                            nextButton={
+                                <Button size="small" onClick={() => {
+                                    if (usersIdx + 1 < users.length)
+                                        setUsersIdx(usersIdx + 1)
+                                            ; handleNext()
 
-                            }} disabled={usersIdx === users.length - 1} 
-                            className={classes2.button}>
-                              Next
+                                }} disabled={usersIdx === users.length - 1}
+                                    className={classes2.button}>
+                                    Next
                               {theme.direction === "rtl" ? (
-                                <KeyboardArrowLeft />
-                              ) : (
-                                <KeyboardArrowRight />
-                              )}
-                            </Button>
-                          }
-                          backButton={
-                            <Button size="small" onClick={() => {
-                                if (usersIdx - 1 > 0)                                         
-                                    setUsersIdx(usersIdx - 1)
-                                ;handleBack()                                    
-                            }} disabled={usersIdx === 1}
-                            className={classes2.button}>
-                              {theme.direction === "rtl" ? (
-                                <KeyboardArrowRight />
-                              ) : (
-                                <KeyboardArrowLeft />
-                              )}
+                                        <KeyboardArrowLeft />
+                                    ) : (
+                                            <KeyboardArrowRight />
+                                        )}
+                                </Button>
+                            }
+                            backButton={
+                                <Button size="small" onClick={() => {
+                                    if (usersIdx - 1 > 0)
+                                        setUsersIdx(usersIdx - 1)
+                                            ; handleBack()
+                                }} disabled={usersIdx === 1}
+                                    className={classes2.button}>
+                                    {theme.direction === "rtl" ? (
+                                        <KeyboardArrowRight />
+                                    ) : (
+                                            <KeyboardArrowLeft />
+                                        )}
                               Back
                             </Button>
-                          }
+                            }
                         />
                     </div>
                 </div>
