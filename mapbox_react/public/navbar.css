@@ -84,7 +84,17 @@ li.nav-item{
   width: auto;
 }
 
+.nav-text>.nav-link{
+  color: inf;
+}
 
+button.nav-text{
+  background-color: black;
+}
+
+button.nav-link{
+  background-color: black;
+}
 
 li>button{
   width: 100%;

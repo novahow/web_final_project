@@ -5999,7 +5999,7 @@
   }
   
   .modal-content {
-    position: relative;
+    position: absolute;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -6012,6 +6012,8 @@
     border-radius: 0.3rem;
     outline: 0;
     z-index: 2050;
+    right: 100px;
+    left: auto;
   }
   
   .modal-backdrop {
