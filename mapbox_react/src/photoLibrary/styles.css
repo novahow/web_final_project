@@ -1,5 +1,6 @@
-
-
+.body {
+	background-color: transparent;
+}
 .intro-container {
 	width: 100%;
 	min-height: 100vh;
@@ -7,10 +8,9 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	padding: 15px;
-	background: #f2f2f2;
-	margin: 0px;
-	box-sizing: border-box; 
+	background: transparent;
+	margin: 0px; 
+	background-color: none;
 }
 
 .intro-wrap {
@@ -203,6 +203,45 @@ input.input {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.prev_button {
+	height: 150px;
+	width: 150px;
+}
+
+.b {
+	height: 80px;
+	width: 80px;
+	font-family: serif;
+	font-size: 25px; 
+	font-weight: bold;
+	border-width: 1px;
+	border-color: white;
+	border-radius: 100%;
+}
+
+.nb {
+	background-color: green;
+}
+
+.b:hover {
+	transform: scale(1.35) perspective(1px);
+	animation-name:rotate;
+    animation-timing-function: ease-in-out; 
+    animation-duration:1.5s;
+}
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+    50%{
+    	transform: scale(1.2, 1.2);
+    }
+    to{
+    	transform: scale(1, 1) rotate(360deg);
+	}
 }
 
 
