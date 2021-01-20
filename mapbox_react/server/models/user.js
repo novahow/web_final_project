@@ -10,8 +10,10 @@ const UserSchema = new Schema({
 	FB: String,
 	IG: String,
 	birthday: String,
-	popularity: {type: Number, default: 0},
+	popularity: { type: Number, default: 0 },
 	photo: String,
+	totalVoting: { type: Number, default: 0 },
+	gender: { type: Number, default: 0 },
 })
 
 // Creating a table within database with the defined schema

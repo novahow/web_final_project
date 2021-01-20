@@ -1,20 +1,71 @@
 type Query {
     users(query: queryUserInput!): [User!]!
+    loginUsers(query: queryLoginUserInput!): [LoginUser!]!
 }
 
 type Mutation {
     createUser(data: createUserInput!): User!
+    createLoginUser(data: createLoginUserInput!): createLoginUserPayload!
+    modifyUser(data: modifyUserInput!): User
     deleteUser(id: ID!): deleteUserPayload!
+    updateUserPopularity(data: updateUserPopularityInput!): User!
     deleteAllUsers: deleteAllUsersPayload!
 }
 
 
 type Subscription {
     user: UserSubscriptionPayload!
+    loginUser: LoginUserSubscriptionPayload!
 }
 
+input queryUserInput {
+    department: String
+}
+input queryLoginUserInput {
+    name: String
+    passwd: String
+}
+input updateUserPopularityInput {
+    id: String!
+    stars: Int!
+}
+input modifyUserInput {
+    id: String!
+    name: String
+    age: Int
+    department: String
+    FB: String
+    IG: String
+    birthday: String
+    popularity: Int
+    photo: String
+    totalVoting: Int
+    gender: Int
+}
+input createUserInput {
+    name: String!
+    age: Int!
+    department: String!
+    FB: String
+    IG: String
+    birthday: String
+    photo: String!
+    gender: Int!
+}
+input createLoginUserInput {
+    name: String!
+    passwd: String!
+}
 
+type createLoginUserPayload {
+    state: State!
+    data: LoginUser
+}
 
+type queryLoginUserPayload {
+    state: State!
+    data: LoginUser
+}
 
 type deleteAllUsersPayload {
     state: String!
@@ -24,24 +75,27 @@ type deleteUserPayload {
     state: String!
 }
 
-input createUserInput {
-    name: String!
-    age: Int!
-    department: String!
-    FB: String
-    IG: String
-    birthday: String
-    photo: String!
+type UserSubscriptionPayload {
+    mutation: MutationType!
+    data: User!
 }
 
-input queryUserInput {
-    department: String
+type LoginUserSubscriptionPayload {
+    mutation: MutationType!
+    data: LoginUser!
 }
+
+
 
 enum MutationType {
     CREATED
     DELETED
     UPDATED
+}
+
+enum State {
+    SUCCESS
+    ERROR
 }
 
 """ sub not supported!
@@ -61,12 +115,13 @@ type User {
     birthday: String
     popularity: Int!
     photo: String!
+    totalVoting: Int!
+    gender: Int!
 }
 
-type UserSubscriptionPayload {
-    mutation: MutationType!
-    data: User!
+type LoginUser {
+    id: ID!
+    name: String!
+    passwd: String!
+    favorite: [String!]!
 }
-
-
-

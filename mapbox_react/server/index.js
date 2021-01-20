@@ -1,5 +1,5 @@
 require('dotenv-defaults').config()
-const { GraphQLServer, PubSub } =  require('graphql-yoga')
+const { GraphQLServer, PubSub } = require('graphql-yoga')
 const Query = require('./resolvers/Query')
 const Mutation = require('./resolvers/Mutation')
 const Subscription = require('./resolvers/Subscription')
@@ -9,8 +9,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const WebSocket = require('ws')
 
-const Message = require('./models/message')
+//const Message = require('./models/message')
 const User = require('./models/user')
+const LoginUser = require('./models/loginUser')
 
 const app = express()
 //const server = http.createServer(app)
@@ -25,7 +26,7 @@ const server = new GraphQLServer({
     Subscription
   },
   context: {
-    Message,
+    LoginUser,
     User,
     pubsub
   }
