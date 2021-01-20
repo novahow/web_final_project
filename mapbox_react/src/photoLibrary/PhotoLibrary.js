@@ -139,7 +139,7 @@ function PhotoLibrary(props) {
                         <div className="button_blank">
                             <MobileStepper
                               variant="dots"
-                              steps={users.length}
+                              steps={users.length - 1}
                               position="static"
                               activeStep={activeStep}
                               className={classes2.root}
