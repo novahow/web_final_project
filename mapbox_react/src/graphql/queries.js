@@ -13,6 +13,7 @@ export const USERS_QUERY = gql`
       popularity
       photo
       totalVoting
+      gender
     }
   }
 `

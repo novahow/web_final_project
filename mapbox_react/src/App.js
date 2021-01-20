@@ -18,6 +18,7 @@ function App() {
     //const bodyRef = useRef(null)
     const containerref = useRef(null)
     const [dep, setDep] = useState('')
+    const [gend, setGend] = useState(0);
     /*useEffect(() => {
         bodyRef.current.focus();
     }, mst)*/
@@ -55,12 +56,13 @@ function App() {
     }
     else if (mst == 1) {
         return (<Map name={windowmaster} switch
-            ={setPressed} dep={setDep} page={mst} />)
+            ={setPressed} dep={setDep} page={mst}
+            gen={setGend} />)
     }
     else {
         return (
             <PhotoLibrary department={dep}
-                switch={setPressed} />
+                switch={setPressed} gen={gend} />
         )
     }
     //}, mst)

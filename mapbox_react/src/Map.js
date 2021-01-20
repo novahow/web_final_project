@@ -48,7 +48,7 @@ const Map = (props) => {
         console.log(val)
         const div = window.document.createElement('div');
         const el = <Intro value={val} opened={opn}
-          switch={props.switch} dep={props.dep} />
+          switch={props.switch} dep={props.dep} gen={props.gen} />
         ReactDOM.render(el, div);
         const popup = new mapboxgl.Popup(
           {
@@ -81,7 +81,8 @@ const Map = (props) => {
   return (
     <div >
 
-      <Nav switch={props.switch} arr={dep_arr} name={props.name} />
+      <Nav switch={props.switch} arr={dep_arr} name={props.name}
+      />
       {/*      <Newnav /><ul className='fuck'>
         <li ><a className="active" href="#login" onClick={() => props.switch(0)}>{master}</a></li>
         <li><Dep_rank arr={dep_arr} /></li>

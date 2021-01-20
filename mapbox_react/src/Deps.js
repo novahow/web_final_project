@@ -22,8 +22,14 @@ const Deps = (props) => {
             <span>
                 {exp ?
                     (<span className='bg'>
-                        <button className='goodbutton' onClick={() => { props.dep(props.ele); props.switch(2) }}> Boy </button>
-                        <button className='goodbutton' onClick={() => { props.dep(props.ele); props.switch(2) }}> Girl </button>
+                        <button className='goodbutton' onClick={() => {
+                            props.dep(props.ele);
+                            props.gen(0); props.switch(2)
+                        }}> Boy </button>
+                        <button className='goodbutton' onClick={() => {
+                            props.dep(props.ele);
+                            props.gen(1); props.switch(2)
+                        }}> Girl </button>
                     </span>
                     ) : (<div></div>)}
             </span>

@@ -15,12 +15,17 @@ function PhotoLibrary(props) {
     const [rating, setRating] = useState(0)
     useEffect(async () => {
         const Users = await getUsers(props.department)
-        console.log(props.department)
-        console.log(Users)
-        if (Users.length > 0) {
-            setUsers([defaultUsers, ...Users])
+        console.log(props.department, props.gen)
+        console.log(Users);
+        const Newuser = Users.filter(e => (e.gender == props.gen));
+        // setUsers(Users.filter(e => (e.gender == props.gen)));
+        console.log(Newuser);
+        if (Newuser.length > 0) {
+            setUsers([defaultUsers, ...Newuser])
             setUsersIdx(1)
         }
+
+        // setUsers(users.filter(e => e.gender == gender));
     }, [])
 
     return (

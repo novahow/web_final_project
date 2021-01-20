@@ -39,7 +39,7 @@ const Intro = (props) => {
 
             </div>) : (sea_in_deps[dp].map(e => (
                 <Deps ele={e} exp={exp}
-                    switch={props.switch} dep={props.dep} />
+                    switch={props.switch} dep={props.dep} gen={props.gen} />
             )))
             }
         </div >

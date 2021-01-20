@@ -40,15 +40,23 @@ const Ranking = (props) => {
     return (
         <div><a className="dropdown-item dropdown-toggle"> {props.dep} </a>
             <ul className="submenu dropdown-menu">
-                boys
+                <div className="dropdown-divider"></div>
+                <div><a className="dropdown-item fuck0" >
+                    boys
+                </a></div>
+                <div className="dropdown-divider"></div>
                 {boys.slice(0, 5).map(e =>
-                (<div><a className="dropdown-item" >
-                    {e.name}({(e.popularity / e.totalVoting).toFixed(1)})
+                    (<div><a className="dropdown-item" >
+                        {e.name}({(e.popularity / e.totalVoting).toFixed(1)})
                     </a></div>))}
+                <div className="dropdown-divider"></div>
+                <div><a className="dropdown-item fuck1">
                     girls
+                </a></div>
+                <div className="dropdown-divider"></div>
                 {girls.slice(0, 5).map(e =>
-                        (<div><a className="dropdown-item" >
-                            {e.name}({(e.popularity / e.totalVoting).toFixed(1)})
+                    (<div><a className="dropdown-item" >
+                        {e.name}({(e.popularity / e.totalVoting).toFixed(1)})
                     </a></div>))}
             </ul>
         </div>
