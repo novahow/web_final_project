@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Button, Input, message, Tag } from 'antd'
 import useChat from '../useChat'
 import loading from './images/loading.gif'
+import Rating from "@material-ui/lab/Rating";
+import { makeStyles } from "@material-ui/core/styles";
 
 function PhotoLibrary(props) {
     const { getUsers, giveStars } = useChat()
@@ -27,7 +29,17 @@ function PhotoLibrary(props) {
 
         // setUsers(users.filter(e => e.gender == gender));
     }, [])
-
+    const useStyles = makeStyles((theme) => ({
+        root: {
+            color: 'white',
+            display: "flex",
+            flexDirection: "column",
+            "& > * + *": {
+                marginTop: theme.spacing(1)
+            }
+        }
+    }));
+    const classes = useStyles();
     return (
         <body>
             <div className="intro-container">
@@ -88,13 +100,25 @@ function PhotoLibrary(props) {
                                     <span> PREV </span>
                                 </button>
                             </div>
-                            <div className="rating">
+                            <div className={classes.root}>
+                                <Rating
+                                    name="half-rating-read"
+                                    size="large"
+                                    value={(users[usersIdx].totalVoting
+                                        == 0 ? 0 : users[usersIdx].popularity
+                                        / users[usersIdx].totalVoting).toFixed(1)}
+
+                                    precision={0.1}
+                                    readOnly
+                                />
+                            </div>
+                            {/*<div className="rating">
                                 <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 4 ? 'star' : 'yellow-star'}>☆</span>
                                 <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 3 ? 'star' : 'yellow-star'}>☆</span>
                                 <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 2 ? 'star' : 'yellow-star'}>☆</span>
                                 <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 1 ? 'star' : 'yellow-star'}>☆</span>
                                 <span className={users[usersIdx].totalVoting === 0 ? 'star' : 'yellow-star'}>☆</span>
-                            </div>
+                            </div>*/}
                             <div className="next_botton">
                                 <button className="b nb" onClick={() => {
                                     if (usersIdx + 1 < users.length) {
@@ -108,7 +132,7 @@ function PhotoLibrary(props) {
                             </div>
                         </div>
                         <div className="average-rating">
-                            <p className="rate-title">Average rating : {users[usersIdx].totalVoting === 0 ? 0 : users[usersIdx].popularity / users[usersIdx].totalVoting | 0}</p>
+                            <p className="rate-title">Average rating : {users[usersIdx].totalVoting === 0 ? 0 : (users[usersIdx].popularity / users[usersIdx].totalVoting).toFixed(1)}</p>
                         </div>
                     </div>
                 </div>

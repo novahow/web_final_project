@@ -1,7 +1,14 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { Button, Input, message, Tag } from 'antd'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
 import Modal from 'react-bootstrap/Modal'
 import useChat from './useChat'
+import TextField from '@material-ui/core/TextField';
 
 const Create = (props) => {
     const { getUsers, addUser, addLoginUser, checkLogin } = useChat()
@@ -15,6 +22,24 @@ const Create = (props) => {
     const [photo, setPhoto] = useState('');
     const [gend, setGend] = useState(0)
     const [newGirl, setnewGirl] = useState({})
+    const useStyles = makeStyles((theme) => ({
+        button: {
+            margin: theme.spacing(1),
+        },
+    }));
+
+    const classes = useStyles();
+
+    const useStyles2 = makeStyles((theme) => ({
+        root: {
+            '& > *': {
+                margin: theme.spacing(1),
+                width: '25ch',
+            },
+        },
+    }));
+
+    const classes2 = useStyles2();
     return (
         <Modal
             {...props}
@@ -28,43 +53,79 @@ const Create = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <form action="/action_page.php">
-                    <Input placeholder='name'
+                    <TextField placeholder='name'
                         onChange=
                         {(e) => setName(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='age'
+                    <TextField placeholder='age'
                         onChange=
                         {(e) => setAge(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='department'
+                    <TextField placeholder='department'
                         onChange=
                         {(e) => setDep(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='fb'
+                    <TextField placeholder='fb'
                         onChange=
                         {(e) => setFb(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='ig'
+                    <TextField placeholder='ig'
                         onChange=
                         {(e) => setIg(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='birth'
+                    <TextField placeholder='birth'
                         onChange=
                         {(e) => setBirth(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='photo_url'
+                    <TextField placeholder='photo_url'
                         onChange=
                         {(e) => setPhoto(e.target.value)}
+                        fullWidth
                     />
-                    <Input placeholder='gender(0~2)'
+                    <TextField placeholder='gender(0~2)'
                         onChange=
                         {(e) => setGend(e.target.value)}
+                        fullWidth
                     />
                 </form>
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={async () => {
+                <Button
+                    variant="contained"
+                    color="default"
+                    className={classes.button}
+                    startIcon={<CloudUploadIcon />}
+                    onClick={async () => {
+                        const u = newGirl;
+                        u['name'] = name;
+                        u['IG'] = ig;
+                        u['department'] = dep;
+                        u['FB'] = fb;
+                        u['birthday'] = birth;
+                        u['gender'] = parseInt(gend);
+                        u['photo'] = photo;
+                        u['age'] = parseInt(age);
+                        if (name != '' && ig != '' &&
+                            dep != '' &&
+                            fb != '' && birth != ''
+                            && gend != ''
+                            && photo != ''
+                            && age != '') {
+                            addUser(u);
+                        }
+                        await props.onHide();
+                    }}
+                >
+                    Submit
+                </Button>
+                {/*<Button onClick={async () => {
                     const u = newGirl;
                     u['name'] = name;
                     u['IG'] = ig;
@@ -83,7 +144,7 @@ const Create = (props) => {
                         addUser(u);
                     }
                     await props.onHide();
-                }}>Submit</Button>
+                }}>Submit</Button>*/}
             </Modal.Footer>
         </Modal>
     )
