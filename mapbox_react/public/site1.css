@@ -97,11 +97,27 @@ button.back{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: lightcyan;
+  background-color: white;
 }
 
 .bg:hover{
   background-color: lightsalmon;
+}
+
+.left_bg {
+  width: 50%;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
+}
+
+.right_bg {
+  width: 50%;
+  background-color: pink;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
 }
 
 .goodbutton{
@@ -123,6 +139,13 @@ button.back{
   
   margin: 7% auto;
   letter-spacing: 0.05em;
+}
+
+.goodbutton:hover {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  transform: scale(1.1) perspective(1px);
 }
 
 span{
@@ -212,8 +235,9 @@ a {
 }
 
 .cbutton#ghost {
-	background-color: darkgoldenrod;
-	border-color: #FFFFFF;
+	background-color: #FFFFFF;
+	border-color: #FF4B2B;
+  color: #FF4B2B;
 }
 
 .cbutton a{
@@ -524,10 +548,6 @@ button{
   padding-top: 10px;
   background: #f1a2b5;
   color: white;
-}
-
-.txtimg.txt {
-  
 }
 
 .txtimg:hover{
