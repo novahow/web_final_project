@@ -4,6 +4,9 @@ import { Button, Input, message, Tag } from 'antd'
 import { useHistory, useLocation, NavLink, useParams, Switch, Route } from "react-router-dom";
 import { alert, prompt } from '@ungap/global-this';
 import useChat from './useChat'
+import { Facebook, Instagram, LinkedIn } from '@material-ui/icons';
+
+
 const Form = (props) => {
     const { getUsers, addUser, addLoginUser, checkLogin } = useChat()
     const setMaster1 = props.change;
@@ -25,6 +28,7 @@ const Form = (props) => {
     const [newLoginUserData, setNewLoginUserData] = useState({})
     useEffect(() => {
         bodyRef.current.focus();
+        console.log("start")
     }, [mst])
 
     /*function handle() {
@@ -36,15 +40,14 @@ const Form = (props) => {
     }
 
     return (
-        <div className="container" id="container" ref={containerref}>
-
+        <div className="container" id="container" ref={containerref}>/
             <div className="form-container sign-up-container">
                 <form action="#">
                     <h1>Create Account </h1>
                     <div className="social-container">
-                        <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                        <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                        <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                       <Facebook className="icon" color="primary"/>
+                       <Instagram className="icon"/>
+                       <LinkedIn className="icon" color="primary"/>    
                     </div>
                     <span>or use your email for registration</span>
                     <Input type="text" placeholder="Username"
@@ -75,9 +78,9 @@ const Form = (props) => {
                 <form action="#">
                     <h1>Sign in</h1>
                     <div className="social-container">
-                        <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                        <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                        <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+                        <Facebook className="icon" color="primary"/>
+                        <Instagram className="icon" style={{fill: "pink"}}/>
+                        <LinkedIn className="icon" color="primary"/> 
                     </div>
                     <span>or use your account</span>
                     <Input

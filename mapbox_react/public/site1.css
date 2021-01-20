@@ -166,6 +166,9 @@ body{
 	flex-direction: column;
 }
 
+.classes {
+  z-index: 100;
+}
 
 .login{
   align-content: center;
@@ -238,6 +241,25 @@ a {
 	background-color: #FFFFFF;
 	border-color: #FF4B2B;
   color: #FF4B2B;
+}
+
+.cbutton#ghost:hover {
+  transform: scale(1.25);
+  animation-name:rotate;
+  animation-timing-function: ease-in-out; 
+  animation-duration:1.5s;
+}
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+    50%{
+      transform: scale(1.2, 1.2);
+    }
+    to{
+      transform: scale(1, 1) rotate(360deg);
+  }
 }
 
 .cbutton a{
@@ -392,15 +414,14 @@ input {
 	margin: 20px 0;
 }
 
-.social-container a {
-	border: 1px solid #DDDDDD;
+.social-container .icon {
 	border-radius: 50%;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0 5px;
-	height: 40px;
-	width: 40px;
+	height: 60px;
+	width: 60px;
 }
 
 div .fuck ul{

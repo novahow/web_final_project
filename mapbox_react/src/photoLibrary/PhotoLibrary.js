@@ -1,10 +1,14 @@
 import './styles.css'
 import React, { useEffect, useState } from 'react'
-import { Button, Input, message, Tag } from 'antd'
+import { Input, message, Tag } from 'antd'
 import useChat from '../useChat'
 import loading from './images/loading.gif'
 import Rating from "@material-ui/lab/Rating";
-import { makeStyles } from "@material-ui/core/styles";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Button from "@material-ui/core/Button";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
 function PhotoLibrary(props) {
     const { getUsers, giveStars } = useChat()
@@ -15,6 +19,7 @@ function PhotoLibrary(props) {
     const [usersIdx, setUsersIdx] = useState(0)
     const [usersUrl, serUsersUrl] = useState(loading)
     const [rating, setRating] = useState(0)
+    const [activeStep, setActiveStep] = useState(0);
     useEffect(async () => {
         const Users = await getUsers(props.department)
         console.log(props.department, props.gen)
@@ -29,6 +34,7 @@ function PhotoLibrary(props) {
 
         // setUsers(users.filter(e => e.gender == gender));
     }, [])
+
     const useStyles = makeStyles((theme) => ({
         root: {
             color: 'white',
@@ -38,8 +44,35 @@ function PhotoLibrary(props) {
                 marginTop: theme.spacing(1)
             }
         }
+
     }));
     const classes = useStyles();
+
+    const useStyles2 = makeStyles({
+      root: {
+        maxWidth: 600,
+        flexGrow: 1,
+        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+      },
+      button:{
+        background: 'white',
+        fontWeight: 'bold',
+        color: 'black',
+        '&:hover': {
+            background: 'black',
+            color: 'white'
+        }
+      }
+    });
+    const classes2 = useStyles2();
+    const theme = useTheme();
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
     return (
         <body>
             <div className="intro-container">
@@ -49,7 +82,7 @@ function PhotoLibrary(props) {
                             Department : {users[usersIdx].department}
                         </span>
                         <span className="intro-title">
-                            Gender : {users[usersIdx].gender}
+                            Gender : {users[usersIdx].gender === 0 ? 'Male' : 'Female'}
                         </span>
                         <span className="intro-title">
                             Name : {users[usersIdx].name}
@@ -87,19 +120,8 @@ function PhotoLibrary(props) {
                             <div className="display">
                                 <img src={users[usersIdx].photo} />
                             </div>
-                        </div>
-                        <div className="button_blank">
-                            <div className="prev_botton">
-                                <button className="b pb" onClick={() => {
-                                    if (usersIdx - 1 > 0) {
-                                        setUsersIdx(0)
-                                        setUsersIdx(usersIdx - 1)
-                                    }
-                                }
-                                }>
-                                    <span> PREV </span>
-                                </button>
-                            </div>
+                        </div>                        
+                        <div className="average-rating">
                             <div className={classes.root}>
                                 <Rating
                                     name="half-rating-read"
@@ -112,27 +134,47 @@ function PhotoLibrary(props) {
                                     readOnly
                                 />
                             </div>
-                            {/*<div className="rating">
-                                <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 4 ? 'star' : 'yellow-star'}>☆</span>
-                                <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 3 ? 'star' : 'yellow-star'}>☆</span>
-                                <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 2 ? 'star' : 'yellow-star'}>☆</span>
-                                <span className={users[usersIdx].totalVoting === 0 ? 'star' : users[usersIdx].popularity / users[usersIdx].totalVoting <= 1 ? 'star' : 'yellow-star'}>☆</span>
-                                <span className={users[usersIdx].totalVoting === 0 ? 'star' : 'yellow-star'}>☆</span>
-                            </div>*/}
-                            <div className="next_botton">
-                                <button className="b nb" onClick={() => {
-                                    if (usersIdx + 1 < users.length) {
-                                        setUsersIdx(0)
-                                        setUsersIdx(usersIdx + 1)
-                                    }
-                                }
-                                }>
-                                    <span> NEXT </span>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="average-rating">
                             <p className="rate-title">Average rating : {users[usersIdx].totalVoting === 0 ? 0 : (users[usersIdx].popularity / users[usersIdx].totalVoting).toFixed(1)}</p>
+                        </div>
+                        <div className="button_blank">
+                            <MobileStepper
+                              variant="dots"
+                              steps={users.length}
+                              position="static"
+                              activeStep={activeStep}
+                              className={classes2.root}
+                              nextButton={
+                                <Button size="small" onClick={() => {
+                                    if(usersIdx + 1 < users.length)
+                                        setUsersIdx(usersIdx + 1)
+                                    ;handleNext()
+
+                                }} disabled={usersIdx === users.length - 1} 
+                                className={classes2.button}>
+                                  Next
+                                  {theme.direction === "rtl" ? (
+                                    <KeyboardArrowLeft />
+                                  ) : (
+                                    <KeyboardArrowRight />
+                                  )}
+                                </Button>
+                              }
+                              backButton={
+                                <Button size="small" onClick={() => {
+                                    if (usersIdx - 1 > 0)                                         
+                                        setUsersIdx(usersIdx - 1)
+                                    ;handleBack()                                    
+                                }} disabled={usersIdx === 1}
+                                className={classes2.button}>
+                                  {theme.direction === "rtl" ? (
+                                    <KeyboardArrowRight />
+                                  ) : (
+                                    <KeyboardArrowLeft />
+                                  )}
+                                  Back
+                                </Button>
+                              }
+                            />
                         </div>
                     </div>
                 </div>

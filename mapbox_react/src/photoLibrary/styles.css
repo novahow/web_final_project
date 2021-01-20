@@ -205,84 +205,6 @@ input.input {
 	justify-content: space-between;
 }
 
-.prev_button {
-	height: 150px;
-	width: 150px;
-}
-
-.b {
-	height: 80px;
-	width: 80px;
-	font-family: serif;
-	font-size: 25px; 
-	font-weight: bold;
-	border-width: 1px;
-	border-color: white;
-	border-radius: 100%;
-}
-
-.nb {
-	background-color: green;
-}
-
-.b:hover {
-	transform: scale(1.35) perspective(1px);
-	animation-name:rotate;
-    animation-timing-function: ease-in-out; 
-    animation-duration:1.5s;
-}
-
-@keyframes rotate{
-    from{
-        transform:rotate(0deg);
-    }
-    50%{
-    	transform: scale(1.2, 1.2);
-    }
-    to{
-    	transform: scale(1, 1) rotate(360deg);
-	}
-}
-
-
-.next_button {
-	height: 150px;
-	width: 150px;
-}
-
-.pb {
-	background-color: red;
-}
-
-.star {
-	color: white;
-	font-size: 50px;
-}
-
-.yellow-star {
-	color: yellow;
-	font-size: 50px;
-	font-weight: 900;
-}
-
-.rating {
-	width: 60%;
-	unicode-bidi: bidi-override;
-	direction: rtl;
-	text-align: center;
-}
-
-.rating > span {
-	display: inline-block;
-	position: relative;
-	width: 1.1em;
-}
-
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-}
 
 .average-rating {
 	width: 100%;
@@ -295,6 +217,11 @@ input.input {
 
 .rate-title {
 	font-family: sans-serif;
-	font-size: 20px;
+	font-size: 25px;
 	color: white; 
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
