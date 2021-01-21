@@ -24,7 +24,7 @@ https://www.youtube.com/watch?fbclid=IwAR0zMMI-k-kVCxK_3d4wyph6mi_wgDfS_u_Wbpo76
 for details see the demo video
 
 ## Structure
-![](https://i.imgur.com/WOsl7ru.png =350x600)
+![alt text](https://i.imgur.com/WOsl7ru.png =350x600)
 
 ## Technique
 - Frontend
